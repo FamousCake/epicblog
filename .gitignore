@@ -2,6 +2,7 @@
 /vendor
 /bower_components
 /node_modules
+/.sass-cache
 composer.phar
 composer.lock
 .env.*.php
