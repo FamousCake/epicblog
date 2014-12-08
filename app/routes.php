@@ -15,3 +15,5 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('post/index', array('as' => 'post.index', 'uses' => 'PostController@index'));
