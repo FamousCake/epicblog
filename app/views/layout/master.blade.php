@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>So Epic!</title>
+        <link href="/assets/stylesheets/application.css" rel="stylesheet">
+        <script src="/assets/javascripts/application.js"></script>
 
     </head>
     <body>

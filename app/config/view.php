@@ -28,6 +28,14 @@ return array(
 
 	'pagination' => 'pagination::slider-3',
 
+	/*
+	|--------------------------------------------------------------------------
+	| Current layout name
+	|--------------------------------------------------------------------------
+	|
+	| This is the current layout name that's being used
+	|
+	*/
 	'layout' => 'layout.master',
 
 );
