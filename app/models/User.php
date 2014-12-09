@@ -7,6 +7,12 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	public function setPasswordAttribute($pass){
+
+		$this->attributes['password'] = Hash::make($pass);
+
+	}
+
 	use UserTrait, RemindableTrait;
 
 	/**
@@ -22,5 +28,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
+
+	protected $fillable = array('email', 'username', 'password');
+
+
+	static public $rules = array(
+		'username' => 'required|alpha_dash|',
+		'email' => 'required|email|unique:users,email',
+	);
+
+
+	public function posts()
+    {
+        return $this->hasMany('Post');
+    }
 
 }

@@ -3,7 +3,11 @@
 
 class Post extends Eloquent
 {
-    protected $fillable = array('user_id', 'title', 'body', 'created_at', 'updated_at');
-    protected $guarded = array('id');
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 
+    protected $fillable = array('user_id', 'title', 'body');
+    protected $guarded = array('id', 'created_at', 'updated_at');
 }

@@ -9,7 +9,7 @@ module.exports = function(grunt) {
               './bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
               './app/assets/javascripts/*.js'
             ],
-        dest: './public/assets/javascripts/application.js'
+            dest: './public/assets/javascripts/application.js'
         }
     },
 

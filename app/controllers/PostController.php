@@ -23,7 +23,11 @@ class PostController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		if (!Auth::check()) {
+			return Redirect::route('user.login');
+		}
+
+		return View::make('post.create');
 	}
 
 
@@ -34,6 +38,17 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
+		if (!Auth::check()) {
+			return Redirect::route('user.login');
+		}
+
+		$input = Input::only('title', 'body');
+
+		$input['user_id'] = 1;
+
+		Post::create($input);
+
+		return Redirect::route('post.index');
 		//
 	}
 
@@ -58,7 +73,13 @@ class PostController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		if (!Auth::check()) {
+			return Redirect::route('user.login');
+		}
+
+		$post = Post::find($id);
+
+		return View::make('post.edit')->with(compact('post'));
 	}
 
 
@@ -70,7 +91,18 @@ class PostController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		if (!Auth::check()) {
+			return Redirect::route('user.login');
+		}
+
+		$input = Input::only('title', 'body');
+		$post = Post::find($id);
+
+		if (isset($post)) {
+			$post->update($input);
+		}
+
+		return Redirect::route('post.index');
 	}
 
 
@@ -82,7 +114,12 @@ class PostController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if (!Auth::check()) {
+			return Redirect::route('user.login');
+		}
+
+		Post::destroy($id);
+		return Redirect::route('post.index');
 	}
 
 
