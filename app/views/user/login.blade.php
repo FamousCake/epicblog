@@ -8,7 +8,7 @@
         {{ Form::text('email', '', array('class' => 'form-control', 'placeholder' => 'Please enter the post email ...')) }}
 
         {{ Form::label('password', 'Your password') }}
-        {{ Form::text('password', '', array('class' => 'form-control', 'placeholder' => 'Please enter the post password ...')) }}
+        {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Please enter the post password ...')) }}
 
         {{ Form::submit('Submit', '', array('class' => 'btn btn-default')) }}
 
