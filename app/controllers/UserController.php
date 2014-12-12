@@ -31,37 +31,38 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('email', 'username', 'password');
-        $validation = Validator::make($input, User::$rules);
+		$errors = User::tryStore(Input::only('email', 'username', 'password'));
 
-        if ($validation->fails())
-        {
-        	return Redirect::route('user.create')
-            ->withInput()
-            ->withErrors($validation)
-            ->with('message', 'There were validation errors.');
+		if ($errors === null ) {
+			return Redirect::route('post.index');
         }
 
-
-        User::create($input);
-        return Redirect::route('post.index');
+        else {
+        	return Redirect::route('user.create')
+            ->withInput()
+            ->withErrors($errors)
+            ->with('message', 'There were validation errors.');
+        }
 	}
 
 
 	public function internalLogin()
 	{
-		$input = Input::only('email', 'password');
+		$errors = User::tryLogin(Input::only('email', 'password'));
 
-		if (Auth::attempt(array('email' => $input['email'], 'password' => $input['password'])))
-		{
-		    return Redirect::route('post.index');
+		if($errors === null) {
+			return Redirect::route('post.index');
 		}
 
-		return Redirect::route('user.login');
+		return Redirect::route('user.login')
+		            ->withInput()
+		            ->withErrors($errors)
+		            ->with('message', 'There were validation errors.');
 	}
 
 	public function login()
 	{
+
 		return View::make('user.login');
 	}
 
@@ -80,6 +81,8 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		$data = User::find($id);
+		return View::make('user.show')->with(compact('data'));
 		//
 	}
 

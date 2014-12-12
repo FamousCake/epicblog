@@ -2,7 +2,7 @@
     @if (Auth::check())
         <p> {{ 'Hello'.' '.Auth::user()->email }} </p>
     @else
-        <p> {{ 'Hello'.' '.'whoever you are...' }} </p>
+        <p> {{ 'Hello'.' '.'Whoever you migh be ...' }} </p>
     @endif
 
 </header>

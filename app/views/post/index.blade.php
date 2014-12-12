@@ -9,6 +9,21 @@
     @endif
 
     <table class="table table-hover table-striped">
+        <tr>
+            <th>
+                <p>Title</p>
+            </th>
+            <th>
+                <p>Test</p>
+            </th>
+            <th>
+                <p>Time Created</p>
+            </th>
+            <th>
+                <p>Author</p>
+            </th>
+        </tr>
+
         @foreach ($data as $node)
         <tr>
             <td>
@@ -20,10 +35,12 @@
             </td>
 
             <td>
-                {{ $node->created_on }}
+                {{ $node->created_at }}
             </td>
 
             <td>
+
+                {{ link_to_route('user.show', $node->user->email, array('id' => $node->user->id)) }}
 
             </td>
 
@@ -42,5 +59,8 @@
             @endif
         </tr>
         @endforeach
+
+        <?php echo $data->appends(array('sort' => 'created_at'))->links(); ?>
+
     </table>
 @stop

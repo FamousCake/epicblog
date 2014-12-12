@@ -17,7 +17,7 @@
 
     @if ($errors->any())
         <ul>
-            {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+            {{ implode('', $errors->all('<li class="error text-danger">:message</li>')) }}
         </ul>
     @endif
 

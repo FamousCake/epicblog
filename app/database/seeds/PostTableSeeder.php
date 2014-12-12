@@ -29,6 +29,12 @@ class PostTableSeeder extends Seeder {
             'title' => 'Lorem Ipsum something, something',
             'body' => 'You didn\'t think you\'d get away without this did you?',
         ));
+
+        Post::create(array(
+            'user_id' => 2,
+            'title' => 'Something, something in the month of may',
+            'body' => 'Something something something else would it something something else',
+        ));
     }
 
 }

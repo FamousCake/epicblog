@@ -10,7 +10,7 @@ class PostController extends \BaseController {
 	public function index()
 	{
 		//return Response::json(array('name' => 'Steve', 'state' => 'CA'));
-		$data = Post::all();
+		$data = Post::paginate(2);
 
 		return View::make('post.index')->with(compact('data'));
 	}

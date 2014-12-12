@@ -26,11 +26,12 @@ Route::delete('post/delete/{id}', array('as' => 'post.delete', 'uses' => 'PostCo
 Route::post('post/create', array('as' => 'post.store', 'uses' => 'PostController@store'));
 
 
+Route::get('user/show/{id}', array('as' => 'user.show', 'uses' => 'UserController@show'));
+
 Route::get('user/create', array('as' => 'user.create', 'uses' => 'UserController@create'));
 Route::post('user/create', array('as' => 'user.store', 'uses' => 'UserController@store'));
 
 Route::get('user/login', array('as' => 'user.login', 'uses' => 'UserController@login'));
 Route::post('user/login', array('as' => 'user.internalLogin', 'uses' => 'UserController@internalLogin'));
-
 
 Route::get('user/logout', array('as' => 'user.logout', 'uses' => 'UserController@logout'));

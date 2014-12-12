@@ -14,19 +14,19 @@ class UserTableSeeder extends Seeder {
         User::create(array(
             'email' => 'moonyy@abv.bg',
             'username' => 'FamousCake',
-            'password' => '$2y$10$t.TjM2vcJsoWI9uC0soeM.DLd.ZJ59vdhG4edfHmkVy.BTXuNcJCa'
+            'password' => '123'
         ));
 
         User::create(array(
             'email' => 'EpicBro@epic.com',
             'username' => 'someoneUnimportatn',
-            'password' => '$2y$10$t.TjM2vcJsoWI9uC0soeM.DLd.ZJ59vdhG4edfHmkVy.BTXuNcJCa'
+            'password' => '123'
         ));
 
         User::create(array(
             'email' => 'suchEmail',
             'username' => 'someone',
-            'password' => '$2y$10$t.TjM2vcJsoWI9uC0soeM.DLd.ZJ59vdhG4edfHmkVy.BTXuNcJCa'
+            'password' => '123'
         ));
     }
 

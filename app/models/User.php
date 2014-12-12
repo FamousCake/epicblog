@@ -31,16 +31,48 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = array('email', 'username', 'password');
 
-
 	static public $rules = array(
 		'username' => 'required|alpha_dash|',
 		'email' => 'required|email|unique:users,email',
+		'emailLogin' => 'email',
+		'password' => 'required|min:3'
 	);
 
 
 	public function posts()
     {
         return $this->hasMany('Post');
+    }
+
+    static public function tryLogin($input)
+    {
+    	$validation = Validator::make($input, array(
+    		'email' => self::$rules['emailLogin'],
+    		'password' => self::$rules['password'])
+    	);
+
+    	if (!$validation->fails() ) {
+    		if ( Auth::attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+    	    	return null;
+    		}
+    		else {
+    			$validation->errors()->add('wrongLogin', 'You have entered wrong username and password');
+    		}
+    	}
+
+    	return $validation;
+    }
+
+    static public function tryStore($input)
+    {
+    	$validation = Validator::make($input, User::$rules);
+
+    	if ($validation->fails()) {
+    		return $validation;
+    	}
+
+    	User::create($input);
+    	return null;
     }
 
 }
