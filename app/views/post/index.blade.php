@@ -1,5 +1,9 @@
 @extends(Config::get('view.layout'))
 
+<pre>
+    <?php print_r($data);
+</pre>
+
 @section('content')
 
     @if (Auth::check())
