@@ -1,9 +1,5 @@
 @extends(Config::get('view.layout'))
 
-<pre>
-    <?php print_r($data);
-</pre>
-
 @section('content')
 
     @if (Auth::check())
@@ -56,7 +52,7 @@
 
                 <td>
                     {{ Form::model($node, array('method' => 'DELETE', 'action' => array('post.delete', $node->id))) }}
-                        {{ Form::submit('Submit', '', array('class' => 'btn btn-default')) }}
+                        {{ Form::submit('Delete', '', array('class' => 'btn btn-dange')) }}
                     {{ Form::close(); }}
 
                 </td>
