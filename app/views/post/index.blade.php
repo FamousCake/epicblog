@@ -38,12 +38,6 @@
                 {{ $node->created_at }}
             </td>
 
-            <td>
-
-                {{ link_to_route('user.show', $node->user->email, array('id' => $node->user->id)) }}
-
-            </td>
-
             @if (Auth::check())
 
                 <td>
